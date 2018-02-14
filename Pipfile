@@ -1,0 +1,22 @@
+[[source]]
+
+url = 'https://pypi.python.org/simple'
+verify_ssl = true
+name = 'pypi'
+
+
+[requires]
+
+python_version = '3'
+
+
+[dev-packages]
+
+pytest = "*"
+pytest-watch = "*"
+
+
+[packages]
+
+requests = ">=2.18.4"
+"e1839a8" = {path = ".", editable = true}

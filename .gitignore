@@ -1,0 +1,20 @@
+# Vim
+*.swo
+*.swp
+
+# Python
+__pycache__
+*.py[co]
+*.egg-info
+*.pot
+.tox/
+.pytest_cache/
+dist/
+docs/_build/
+docs/locale/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
+MANIFEST
+Pipfile.lock

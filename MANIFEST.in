@@ -1,0 +1,6 @@
+include MANIFEST.in
+include README.md
+include setup.py
+recursive-include *.py
+global-exclude __pycache__
+global-exclude *.py[co]
