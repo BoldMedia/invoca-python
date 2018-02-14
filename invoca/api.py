@@ -46,8 +46,8 @@ class Invoca:
         oauth_token = {'oauth_token': self.oauth_token}
         response = requests.get(url, params={**oauth_token, **kwargs})
 
-        if response.status_code is not 200:
-            logger.warning('Failed to pull transactions. Response: {}'.format(
+        if response.status_code is not 200 and response.status_code is not 201:
+            logger.warning('Non-200 Request. Response: {}'.format(
                 response.text))
             return None
 

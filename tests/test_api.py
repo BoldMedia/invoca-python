@@ -78,9 +78,22 @@ class TestAPIRequest(unittest.TestCase):
 
         self.assertEqual(o_url, expected_url)
 
-    def test_send_request_accepts_url(self):
+    @mock.patch('invoca.api.requests.get', side_effect=mocked_transaction)
+    def test_send_request_accepts_url(self, mocked_func):
         url = 'https://google.com'
         self.api._request(url)
+
+    @mock.patch('invoca.api.requests.get', side_effect=mocked_transaction)
+    def test_request_merges_oauth_token_and_filters(self, mocked_func):
+        url = 'https://google.com'
+        filters = {'filter-key': 'filter-val'}
+        self.api._request(url, **filters)
+
+        expected_request_params = {
+            'oauth_token': self.oauth_token,
+            'filter-key': 'filter-val'
+        }
+        mocked_func.assert_called_with(url, params=expected_request_params)
 
     def test_transactions_account_type_param_can_only_be_enum(self):
         with self.assertRaises(InvocaException):
