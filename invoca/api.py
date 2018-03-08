@@ -9,7 +9,7 @@ from .exceptions import (InvocaException,
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
-SUPPORTED_API_VERSIONS = ['2017-04-01']
+SUPPORTED_API_VERSIONS = ['2017-04-01', '2017-09-01', '2018-02-01']
 DEFAULT_API_VERSION = SUPPORTED_API_VERSIONS[0]
 
 
