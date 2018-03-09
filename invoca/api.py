@@ -43,8 +43,9 @@ class Invoca:
         return url
 
     def _request(self, url, **kwargs):
-        oauth_token = {'oauth_token': self.oauth_token}
-        response = requests.get(url, params={**oauth_token, **kwargs})
+        params = {'oauth_token': self.oauth_token}
+        params.update(kwargs)
+        response = requests.get(url, params=params)
 
         if response.status_code is not 200 and response.status_code is not 201:
             logger.warning('Non-200 Request. Response: {}'.format(
